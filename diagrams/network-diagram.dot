@@ -1,0 +1,13 @@
+digraph SSH_Lab {
+    rankdir=LR;
+    node [shape=box, style=rounded];
+
+    Attacker [label="Kali Linux\n(Attacker VM)"];
+    Server [label="Debian Server\nOpenSSH Service"];
+    Fail2Ban [label="Fail2Ban\nIntrusion Prevention"];
+    Firewall [label="UFW Firewall\nNetwork Filtering"];
+
+    Attacker -> Server [label="SSH Brute Force Attempts"];
+    Server -> Fail2Ban [label="Logs Failed Logins"];
+    Fail2Ban -> Firewall [label="Bans Malicious IP"];
+}

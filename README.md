@@ -1,5 +1,9 @@
 # Linux SSH Brute-Force Defense Lab
 
+## Network Architecture
+
+![SSH Brute Force Defense Diagram](diagrams/network-diagram.png)
+
 ## Overview
 
 This project simulates a controlled SSH brute-force attack against a Linux server and demonstrates how defensive security controls detect, respond to, and mitigate unauthorized access attempts.

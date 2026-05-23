@@ -1,51 +1,71 @@
-# SSH Brute-Force Attack Simulation & Intrusion Prevention Lab
+# SSH Brute Force Attack Simulation & Defense Report
 
-## 1. Overview
+## 1. Incident Summary
 
-This project demonstrates a controlled SSH brute-force attack simulation and defensive response using a Linux-based intrusion prevention system. The goal was to evaluate authentication security, logging visibility, and automated threat response mechanisms.
+This report documents a simulated SSH brute-force attack against a Debian Linux system and the defensive measures implemented to mitigate the attack. The objective was to understand how unauthorized access attempts can be detected and prevented using Linux security tools.
 
-## 2. Lab Environment
+---
 
-* Attacker Machine: Kali Linux
-* Target Machine: Debian GNU/Linux
-* Service Under Test: OpenSSH
-* Security Tools: Fail2ban, UFW Firewall
+## 2. Environment
 
-## 3. Objective
+- OS: Debian Linux
+- Service: OpenSSH Server
+- Security Tools: Fail2Ban, UFW Firewall
+- Lab Type: Isolated Virtual Machine (VirtualBox)
 
-Simulate unauthorized SSH login attempts and observe:
+---
 
-* system logging behaviour
-* detection by Fail2ban
-* firewall response actions
+## 3. Attack Simulation
 
-## 4. Attack Simulation
+A brute-force attack simulation was performed against the SSH service. Multiple failed login attempts were generated to mimic unauthorized access attempts targeting valid and invalid usernames.
 
-A brute-force SSH attack was performed from the Kali Linux machine against the Debian target using repeated authentication attempts.
+Evidence of failed login attempts is shown in the system logs.
 
-The attack generated multiple failed login events, triggering system security mechanisms.
+---
 
-## 5. Detection & Response
+## 4. Detection
 
-### SSH Logging
+The system successfully recorded multiple failed authentication attempts.
 
-The system recorded failed authentication attempts in real time via system logs.
+Fail2Ban monitored SSH logs and detected repeated failures from the same source, triggering automatic defensive rules.
 
-### Fail2ban Response
+---
 
-Fail2ban detected repeated failed login attempts and automatically banned the attacking IP address.
+## 5. Mitigation
 
-### Firewall Enforcement
+The following security controls were implemented:
 
-UFW enforced network-level blocking rules to prevent further connection attempts.
+### Fail2Ban
+- Monitored `/var/log/auth.log`
+- Detected repeated failed SSH login attempts
+- Automatically banned offending IP addresses
 
-## 6. Results
+### UFW Firewall
+- Restricted and controlled inbound SSH traffic
+- Verified active firewall rules protecting SSH service
 
-* Brute-force attempts successfully detected
-* Attacker IP automatically banned
-* SSH service remained stable and operational
-* No unauthorized access achieved
+---
 
-## 7. Conclusion
+## 6. Evidence
 
-The system successfully demonstrated a layered security model combining authentication controls, intrusion detection, and firewall enforcement. This setup effectively mitigates basic SSH brute-force attacks in a Linux environment.
+Screenshots included in this repository:
+
+1. SSH service running and listening on port 22  
+2. Failed SSH login attempts recorded in logs  
+3. Fail2Ban active jail status  
+4. UFW firewall rules enforcing access control  
+
+---
+
+## 7. Outcome
+
+The system successfully detected and mitigated brute-force attempts. Unauthorized access was prevented through automated banning and firewall enforcement.
+
+---
+
+## 8. Key Learnings
+
+- Importance of monitoring authentication logs
+- Effectiveness of Fail2Ban in brute-force prevention
+- Role of firewall rules in restricting access
+- Value of layered security (defense in depth)

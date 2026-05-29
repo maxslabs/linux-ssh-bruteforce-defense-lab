@@ -1,85 +1,63 @@
-# Linux SSH Brute-Force Defense Lab
-
-## Network Architecture
-
-![SSH Brute Force Defense Diagram](diagrams/network-diagram.png)
+# Debian Linux Administration Lab
 
 ## Overview
-
-This project simulates a controlled SSH brute-force attack against a Linux server and demonstrates how defensive security controls detect, respond to, and mitigate unauthorized access attempts.
-
-The goal of this lab is to replicate a real-world attack scenario and implement layered security controls to protect SSH services in a Linux environment.
+This project is a hands-on Linux administration lab built on Debian in a virtual machine. It demonstrates practical system administration, security configuration, and troubleshooting skills used in IT support, system administration, and cybersecurity roles.
 
 ---
 
-## Lab Environment
-
-- OS: Debian Linux
-- Service: OpenSSH Server
-- Attacker Simulation: Kali Linux
-- Platform: VirtualBox (isolated lab environment)
-
----
-
-## Security Tools Used
-
-- Fail2Ban (intrusion prevention system)
-- UFW Firewall (network filtering)
-- OpenSSH (target service)
-- Linux system logs (`/var/log/auth.log`)
+## Environment
+- Debian 13 (VirtualBox VM)
+- SSH access enabled
+- UFW firewall configured
+- Git version control (SSH authentication)
 
 ---
 
-## Attack Scenario
+## What I Built
 
-A brute-force SSH attack was simulated against the target system using repeated login attempts with invalid credentials. The objective was to test the system’s ability to detect and respond to unauthorized access attempts.
+### System Setup
+- Installed and configured Debian Linux VM
+- Updated system packages
+- Installed core administration tools
 
----
+### Security Configuration
+- Configured SSH remote access
+- Hardened SSH (disabled root login)
+- Enabled UFW firewall with SSH access only
 
-## Detection & Response
+### System Administration
+- User and group management
+- File permissions and ownership
+- Process and resource monitoring
 
-The system successfully identified multiple failed authentication attempts through system logging.
+### Logging & Troubleshooting
+- System log analysis using journalctl
+- Authentication log review
+- Basic incident troubleshooting workflow
 
-Fail2Ban monitored authentication logs in real time and automatically:
-
-- Detected repeated failed login attempts
-- Banned offending IP addresses
-- Updated firewall rules dynamically
-
----
-
-## Mitigation Controls
-
-### Fail2Ban
-- Monitors SSH authentication logs
-- Automatically blocks suspicious IP addresses after repeated failures
-
-### UFW Firewall
-- Enforces network-level access control
-- Restricts unauthorized inbound traffic to SSH service
-
----
-
-## Evidence
-
-The following evidence is included in this repository:
-
-1. SSH service actively listening on port 22  
-2. Multiple failed SSH login attempts recorded in system logs  
-3. Fail2Ban jail status confirming active protection  
-4. UFW firewall rules enforcing access control  
+### Incident Simulation
+- Simulated SSH service failure
+- Diagnosed service status issues
+- Restored service and documented recovery steps
 
 ---
 
-## Outcome
-
-The system successfully detected and mitigated brute-force SSH attempts without manual intervention, demonstrating effective layered security controls.
+## Key Skills Demonstrated
+- Linux system administration
+- Command-line proficiency
+- Network and firewall configuration
+- Security hardening
+- Log analysis and troubleshooting
+- Incident response basics
+- Git + SSH workflow
 
 ---
 
-## Key Learnings
+## Tools Used
+- Debian Linux
+- OpenSSH
+- UFW Firewall
+- systemctl / journalctl
+- Git (SSH authentication)
 
-- Importance of monitoring authentication logs in Linux systems
-- Effectiveness of Fail2Ban for automated intrusion prevention
-- Role of firewall rules in reducing attack surface
-- Value of defense-in-depth security strategy
+---
